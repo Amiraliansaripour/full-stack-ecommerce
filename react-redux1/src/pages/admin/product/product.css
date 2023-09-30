@@ -1,0 +1,86 @@
+.productt-card {
+    width: 90%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--card-background);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 10px 0;
+    overflow: hidden;
+    border: 1px #000 solid;
+    overflow: scroll;
+}
+
+.productt-card::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    background: lightgray;
+}
+
+.productt-card::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(183, 176, 176);
+    border-radius: 15px;
+    height: 3px;
+
+}
+
+.productt-card::-webkit-scrollbar-thumb {
+    height: 3px;
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 6px rgba(131, 125, 125, 0.5);
+    background: rgb(209, 202, 202);
+}
+
+.productt-card input {
+    border-radius: 15px;
+}
+
+
+.product-content {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-title {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.product-price {
+    text-align: center;
+    /* background-color: red; */
+    width: 95%;
+}
+
+.product-price a {
+    background-color: var(--theme-color);
+    color: var(--card-background);
+    font-weight: bold;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.product-price a:hover {
+    background-color: var(--card-background);
+    border: 2px solid var(--theme-color);
+    color: var(--theme-color);
+}
+
+.product-lable {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    background-color: red;
+    padding: 7px;
+    border-radius: 15px;
+    color: var(--white-color);
+    font-weight: bold;
+    z-index: 2;
+    font-size: 13px;
+}

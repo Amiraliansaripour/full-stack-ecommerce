@@ -1,0 +1,56 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Vazirmatn', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Vazirmatn', sans-serif;
+}
+table,tr,td,th{
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+a,p,strong{
+  font-family: 'Vazirmatn', sans-serif;
+}
+a{
+  text-decoration: none;
+  font-family: 'Vazirmatn', sans-serif;
+  color: rgb(20, 19, 19);
+}
+a:hover{
+  color: var(--theme-color);
+  text-decoration: none;
+}
+.App {
+  text-align: center;
+}
+
+.prim-btn{
+  background-color: #8B6B60;
+  color: azure;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.prim-btn:hover{
+  background-color: #8e746cad;
+  color: #fff;
+  text-decoration: none;
+}
+
+.line{
+  width: 80%;
+  height: 2px;
+  background-color: #8B6B60;
+}
+
+:root{
+  --title-color:#212529;
+  --white-color :#fff;
+  --black-color :#000;
+  --theme-color:#8B6B60;
+  --card-background:#fff;
+  --theme-btn-color:#E5BA73
+
+}

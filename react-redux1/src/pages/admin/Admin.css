@@ -1,0 +1,36 @@
+
+td {
+text-align: center !important;
+}
+
+th {
+    text-align: center !important;
+}
+
+form, input ,textarea{
+    direction: rtl;
+    text-align: right;
+}
+
+.description{
+    background-color: #EDEDED;
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    
+}
+
+.status-active{
+    background-color: green;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+
+.status-deactive{
+    background-color: red;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}

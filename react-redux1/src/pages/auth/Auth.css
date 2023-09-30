@@ -1,0 +1,71 @@
+.main-login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Vazirmatn', sans-serif;
+  /* background: url("https://storage.needpix.com/rsynced_images/brown-diagonal-bars.jpg"); */
+}
+
+
+.login-con {
+  width: 40%;
+  height: auto;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #faeab141;
+  backdrop-filter: blur(10px);
+}
+
+.login-con .login-form{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-form input{
+    outline: 0;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-radius: 15px;
+    text-align: center;
+}
+.login-form textarea{
+    outline: 0;
+    width: 100%;
+    height: 140px;
+    resize: none;
+    border: 0;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.login-form button{
+    background-color:#E5BA73 ;
+    color:#fff ;
+}
+
+.login-form button:hover{
+    background-color:#a48759b7 ;
+    color:#fff ;
+}
+
+.login-form .login-title{
+    color: #FAEAB1;
+}
+
+@media screen and (max-width:768px) {
+    .login-con{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .login-con{
+        width: 90%;
+    }
+}

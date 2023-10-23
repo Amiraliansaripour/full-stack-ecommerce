@@ -11,11 +11,14 @@ import {
     productPhotoController,
     deleteProductController,
     getAllProductForAdminController,
-    updateProductController
+    updateProductController,
+    productPageListController,
+    filterProductController,
+    searchProductController,
+    similarProductController
 } from '../../controller/productController.js';
 
 const router = express.Router()
-
 
 const storage = multer.diskStorage({
     destination: function (req, res, cb) {
@@ -56,8 +59,8 @@ router.get('/', getProductController)
 // get all product for dmin panel
 router.get('/admin', getAllProductForAdminController)
 
-getAllProductForAdminController
-
+// get product per page
+router.get('/page/:page', productPageListController)
 // get single-product
 router.get('/:id', getSingleProductController)
 
@@ -71,7 +74,16 @@ router.delete(
     isAdmin,
     deleteProductController)
 
+
+// filter product
+router.post('/filter', filterProductController)
 export default router
 
 
-// 5:24:46
+// search product
+router.get('/search/:keyword', searchProductController)
+
+
+// similar products
+router.get('/similar/:cid', similarProductController)
+

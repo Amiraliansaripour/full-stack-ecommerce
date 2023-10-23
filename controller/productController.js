@@ -20,6 +20,8 @@ export const createProductController = async (req, res) => {
                 return response({ res, code: 404, message: "لطفا قیمت را وارد کنید", result: false, })
             case !category:
                 return response({ res, code: 404, message: "لطفا دسته بندی را وارد کنید", result: false, })
+            case !brand:
+                return response({ res, code: 404, message: "لطفا برند را وارد کنید", result: false, })
             case !smell:
                 return response({ res, code: 404, message: "لطفا رایحه را وارد کنید", result: false, })
             case !count:
@@ -35,6 +37,7 @@ export const createProductController = async (req, res) => {
             , enName
             , price
             , category
+            , brand
             , smell
             , mil
             , description
@@ -84,6 +87,8 @@ export const updateProductController = async (req, res) => {
                 return response({ res, code: 404, message: "لطفا دسته بندی را وارد کنید", result: false, })
             case !smell:
                 return response({ res, code: 404, message: "لطفا رایحه را وارد کنید", result: false, })
+            case !brand:
+                return response({ res, code: 404, message: "لطفا برند را وارد کنید", result: false, })
             case !count:
                 return response({ res, code: 404, message: "لطفا تعداد را وارد کنید", result: false, })
             case !mil:
@@ -104,6 +109,7 @@ export const updateProductController = async (req, res) => {
                 , mil
                 , description
                 , count
+                , brand
                 , status: status
                 , thumb: req.file.filename
                 , slug: slugify(enName)
@@ -125,6 +131,7 @@ export const updateProductController = async (req, res) => {
             , smell
             , mil
             , description
+            , brand
             , count
             , status: status
             // , thumb: req.file.filename
@@ -242,6 +249,7 @@ export const getSingleProductController = async (req, res) => {
             data: product,
             result: true
         })
+
     } catch (error) {
         response({
             res,
@@ -285,6 +293,128 @@ export const deleteProductController = async (req, res) => {
             res,
             code: 200,
             message: 'محصول حذف شد',
+            result: true,
+        })
+    } catch (error) {
+        response({
+            res,
+            code: 500,
+            result: false,
+            message: error.message,
+            data: { error }
+        })
+    }
+}
+
+// *************** product page ****************
+
+export const productPageListController = async (req, res) => {
+    try {
+        const perPage = 6;
+        const page = req.params.page ? req.params.page : 1
+
+        const product = await Products.find({})
+            .skip((page - 1) * perPage)
+            .limit(perPage)
+            .sort({ createdAt: -1 })
+
+
+        response({
+            res,
+            code: 200,
+            result: true,
+            message: '',
+            data: product
+        })
+
+        res.send
+
+    } catch (error) {
+        response({
+            res,
+            code: 500,
+            result: false,
+            message: error.message,
+            data: { error }
+        })
+    }
+}
+
+
+// **************** product filter ****************
+
+export const filterProductController = async (req, res) => {
+    try {
+        // const { checked, radio } = req.body
+        const { checked } = req.body
+
+        let args = {}
+        if (checked.length > 0) args.category = checked
+        // if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] }
+        console.log(req.body)
+        const product = await Products.find(args)
+
+        response({
+            res,
+            result: true,
+            data: product,
+            message: '',
+            code: 200
+        })
+    } catch (error) {
+        response({
+            res,
+            code: 500,
+            result: false,
+            message: error.message,
+            data: { error }
+        })
+    }
+}
+
+
+// ************************* search product ******************
+export const searchProductController = async (req, res) => {
+    try {
+        const { keyword } = req.params
+        const product = await Products.find({
+            $or: [
+                { name: { $regex: keyword, $options: "i" } },
+                { enName: { $regex: keyword, $options: "i" } }
+            ]
+        })
+        response({
+            res,
+            code: 200,
+            data: product,
+            result: true,
+            message: ''
+        })
+
+    } catch (error) {
+        response({
+            res,
+            code: 500,
+            result: false,
+            message: error.message,
+            data: { error }
+        })
+    }
+}
+
+// **************** similar product ****************
+export const similarProductController = async (req, res) => {
+    try {
+        const { cid } = req.params
+        const product = await Products.find({
+            category: cid
+        })
+
+        response({
+            res,
+            message: '',
+            data: product,
+            code: 200,
             result: true,
         })
     } catch (error) {

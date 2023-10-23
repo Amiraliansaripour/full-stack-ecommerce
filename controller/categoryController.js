@@ -69,6 +69,7 @@ export const getAllCategoryController = async (req, res) => {
             res,
             code: 200,
             message: '',
+            result:true,
             data: category
         })
     } catch (error) {

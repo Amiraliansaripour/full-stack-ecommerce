@@ -50,6 +50,9 @@ const productSchema = new mongoose.Schema({
     status: {
         type: Number,
         required: true,
+    },
+    brand:{
+        type: String,
     }
 }, { timestamps: true })
 

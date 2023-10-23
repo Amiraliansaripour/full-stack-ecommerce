@@ -10,7 +10,7 @@ import smellRoutes from './routes/smell/smellRoutes.js'
 import milRoutes from './routes/mil/milRoutes.js'
 import productRoutes from './routes/product/productRoutes.js'
 import galleryRoutes from './routes/gallery/galleryRoutes.js'
-
+import brandRoutes from './routes/brand/brandRoute.js'
 import cors from 'cors'
 
 const app = express();
@@ -33,6 +33,7 @@ app.use(morgan("dev"))
 // routes
 app.use('/api/auth', authRoute)
 app.use('/api/category', categoryRoutes)
+app.use('/api/brand', brandRoutes)
 app.use('/api/smell', smellRoutes)
 app.use('/api/mil', milRoutes)
 app.use('/api/product', productRoutes)

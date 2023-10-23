@@ -23,7 +23,8 @@ import {
   Orders,
   CreateMil,
   CreateSmell,
-  UploadImage
+  UploadImage,
+  CreateBrand
 } from "./pages/index"
 
 import BottumBar from './components/buttomBar/BottumBar';
@@ -33,6 +34,7 @@ import Layout from './pages/layout/Layout';
 import axios from 'axios';
 import PrivateRoute from './customHooks/Route/PrivateRoute';
 import AdminRouter from './customHooks/Route/AdminRouter';
+import { AllProduct, ProductDetails } from './components';
 
 function App() {
 
@@ -61,17 +63,20 @@ function App() {
           {/* Admin Private */}
           <Route path='/admin' element={<AdminRouter />}>
             <Route path='' element={<Admin />} />
-            <Route path='create-category' element={<CreateCategory />} />
-            <Route path='create-product' element={<CreateProduct />} />
+            <Route path='product' element={<CreateProduct />} />
+            <Route path='category' element={<CreateCategory />} />
             <Route path='users' element={<Users />} />
             <Route path='mil' element={<CreateMil />} />
             <Route path='smell' element={<CreateSmell />} />
             <Route path='gallery' element={<UploadImage />} />
+            <Route path='brand' element={<CreateBrand />} />
           </Route>
           {/* Admin Private */}
 
 
           <Route path='/contact' element={<Contact />} />
+          <Route path='/products' element={<AllProduct />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

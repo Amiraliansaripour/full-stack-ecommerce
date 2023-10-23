@@ -8,7 +8,6 @@ export const createMilController = async (req, res) => {
         if (!name) {
             return response({ res, code: 404, result: false, message: 'لطفا نام میل را وارد  کنید', })
         }
-        console.log(name)
 
         const existingmil = await Mil.findOne({ name })
         if (existingmil) {
